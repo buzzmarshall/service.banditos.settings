@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,18 +48,18 @@ msgstr "Mimari:"
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "LibreELEC, projeyi yönetmek, kod yazmak ve destek sağlamak için zaman ve çaba harcayan küresel bir Linux ve Kodi meraklıları ekibi tarafından yaratılmıştır. Bunu yaparken eğleniyoruz. Umarız kullanarak eğlenirsiniz!"
+msgstr "banditOS, projeyi yönetmek, kod yazmak ve destek sağlamak için zaman ve çaba harcayan küresel bir Linux ve Kodi meraklıları ekibi tarafından yaratılmıştır. Bunu yaparken eğleniyoruz. Umarız kullanarak eğlenirsiniz!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
 msgstr ""
 
 msgctxt "#700"
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@, tekrarlanan Kodi çökmelerinden dolayı geçici olarak güvenli modda başlatıldı.[CR][CR]Artık çökmelerin nedenini ssh veya Samba'yı etkinleştirerek araştırabilirsiniz.[CR][CR]Orijinal Kodi kurulumunuza şu adresten erişebilirsiniz \"/storage/.kodi.FAILED\" ve Samba \"Kodi-Failed\" hisseleri.[CR][CR]Yeniden başlatma, orijinal Kodi kurulumunuza geri dönecektir.[CR][CR]https://forum.libreelec.tv adresine gidin. Daha fazla yardıma ihtiyacınız olursa, TV. Foruma gönderilirken, Ayarlar > LibreELEC > Sistem > Günlüğü Gönder seçeneğindeki çarpışma günlüğü seçeneğini tıklatarak görüntülenebilecek kilitlenme günlüğünüzün bağlantısını da ekleyin."
+msgstr "@DISTRONAME@, tekrarlanan Kodi çökmelerinden dolayı geçici olarak güvenli modda başlatıldı.[CR][CR]Artık çökmelerin nedenini ssh veya Samba'yı etkinleştirerek araştırabilirsiniz.[CR][CR]Orijinal Kodi kurulumunuza şu adresten erişebilirsiniz \"/storage/.kodi.FAILED\" ve Samba \"Kodi-Failed\" hisseleri.[CR][CR]Yeniden başlatma, orijinal Kodi kurulumunuza geri dönecektir.[CR][CR]"" adresine gidin. Daha fazla yardıma ihtiyacınız olursa, TV. Foruma gönderilirken, Ayarlar > banditOS > Sistem > Günlüğü Gönder seçeneğindeki çarpışma günlüğü seçeneğini tıklatarak görüntülenebilecek kilitlenme günlüğünüzün bağlantısını da ekleyin."
 
 msgctxt "#32395"
 msgid "Firewall"

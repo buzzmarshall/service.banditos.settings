@@ -10,7 +10,7 @@ import xbmc
 import xbmcgui
 import xbmcaddon
 
-__scriptid__ = 'service.libreelec.settings'
+__scriptid__ = 'service.banditos.settings'
 __addon__ = xbmcaddon.Addon(id=__scriptid__)
 xbmcDialog = xbmcgui.Dialog()
 

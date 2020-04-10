@@ -2,7 +2,7 @@
 <addon id="service.banditos.settings"
        name="@DISTRONAME@ Configuration"
        version="@ADDONVERSION@"
-       provider-name="libreelec.tv">
+       provider-name="bandit-os.com">
    <requires>
    	<import addon="xbmc.python" version="3.0.0"/>
   </requires>

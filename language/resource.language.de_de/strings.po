@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Architektur: "
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "LibreELEC wurde von einem globalen Team von Linux- und Kodi-Enthusiasten gegründet, die Zeit und Mühe investiert haben, um das Projekt zu verwalten, Code zu schreiben und Support bereitzustellen. Wir haben Spaß dabei. Wir hoffen, Du hast Spaß beim benutzen!"
+msgstr "banditOS wurde von einem globalen Team von Linux- und Kodi-Enthusiasten gegründet, die Zeit und Mühe investiert haben, um das Projekt zu verwalten, Code zu schreiben und Support bereitzustellen. Wir haben Spaß dabei. Wir hoffen, Du hast Spaß beim benutzen!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Support[/B] gibt es über das Forum:[CR]https://forum.libreelec.tv[CR][CR][B]Dokumentation[/B] findest du im Wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] ist auf GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Spenden[/B] gern über PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Support[/B] gibt es über das Forum:[CR]""[CR][CR][B]Dokumentation[/B] findest du im Wiki:[CR]""[CR][CR][B]Code[/B] ist auf GitHub:[CR]""[CR][CR][B]Spenden[/B] gern über """
 
 msgctxt "#700"
 msgid ""
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@ wurde temporär aufgrund wiederholter Abstürze von Kodi im Sicherheitsmodus gestartet.[CR][CR]Du solltest die Gründe für die Abstürze durch aktivieren von SSH oder Samba untersuchen.[CR][CR]Auf die ursprüngliche Kodi-Installation kann über \"/storage/.kodi.FAILED\" und der Samba-Freigabe \"Kodi-Failed\" zugegriffen werden.[CR][CR]Über einen Neustart gelangst du zurück zu deiner ursprünglichen Kodi-Installation.[CR][CR]Besuche https://forum.libreelec.tv, wenn du weitere Hilfe benötigst. Wenn du im Forum postest, füge bitte deine Absturz-Logs hinzu. Diese Absturz-Logs können unter Einstellungen > LibreELEC > System > Fehlerbericht (Log) übermitteln, angezeigt werden."
+msgstr "@DISTRONAME@ wurde temporär aufgrund wiederholter Abstürze von Kodi im Sicherheitsmodus gestartet.[CR][CR]Du solltest die Gründe für die Abstürze durch aktivieren von SSH oder Samba untersuchen.[CR][CR]Auf die ursprüngliche Kodi-Installation kann über \"/storage/.kodi.FAILED\" und der Samba-Freigabe \"Kodi-Failed\" zugegriffen werden.[CR][CR]Über einen Neustart gelangst du zurück zu deiner ursprünglichen Kodi-Installation.[CR][CR]Besuche "", wenn du weitere Hilfe benötigst. Wenn du im Forum postest, füge bitte deine Absturz-Logs hinzu. Diese Absturz-Logs können unter Einstellungen > banditOS > System > Fehlerbericht (Log) übermitteln, angezeigt werden."
 
 msgctxt "#32395"
 msgid "Firewall"

@@ -1,10 +1,10 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
-"Project-Id-Version: LibreELEC Settings Add-on\n"
+"Project-Id-Version: banditOS Settings Add-on\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,19 +49,19 @@ msgstr "Arhitektūra: "
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "LibreELEC ir globāla Linux un Kodi entuziastu komanda, kas velta savu laiku un pūles, lai pārvaldītu projektu, rakstītu kodu un sniegtu atbalstu. Mums tas sagādā prieku. Mēs ceram, ka jūs to novērtēsiet!"
+msgstr "banditOS ir globāla Linux un Kodi entuziastu komanda, kas velta savu laiku un pūles, lai pārvaldītu projektu, rakstītu kodu un sniegtu atbalstu. Mums tas sagādā prieku. Mēs ceram, ka jūs to novērtēsiet!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Atbalsts[/B] tiek nodrošināts, izmantojot mūsu forumu:[CR]https://forum.libreelec.tv[CR][CR][B]Dokumentāciju[/B] var izlasīt mūsu wiki:[CR]https://libreelec.wiki[CR][CR][B]Kods[/B] atrodams vietnē GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Ziedojumi[/B] projektam tiek pieņemti, izmantojot PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Atbalsts[/B] tiek nodrošināts, izmantojot mūsu forumu:[CR]""[CR][CR][B]Dokumentāciju[/B] var izlasīt mūsu wiki:[CR]""[CR][CR][B]Kods[/B] atrodams vietnē GitHub:[CR]""[CR][CR][B]Ziedojumi[/B] projektam tiek pieņemti, izmantojot """
 
 msgctxt "#700"
 msgid ""
@@ -1011,11 +1011,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@ atkārtotu Kodi avāriju dēļ īslaicīgi strādā drošajā režīmā.[CR][CR]Tagad varat izpētīt avāriju cēloni, iespējojot SSH vai Samba.[CR][CR]Kodi instalācijai varat piekļūt, izmantojot \"/storage/.kodi.FAILED\" un Samba \"Kodi-Failed\" koplietojumus.[CR][CR]Pēc restarta atgriezīsies sākotnējā Kodi instalācija.[CR][CR]Ja jums ir nepieciešama papildu palīdzība, dodieties uz https://forum.libreelec.tv. Rakstot forumā, iekļaujiet saiti uz jūsu avārijas žurnālu, kuru var apskatīt, noklikšķinot uz avārijas žurnāla opcijām sadaļā Iestatījumi > LibreELEC > Sistēma > Žurnāla nosūtīšana."
+msgstr "@DISTRONAME@ atkārtotu Kodi avāriju dēļ īslaicīgi strādā drošajā režīmā.[CR][CR]Tagad varat izpētīt avāriju cēloni, iespējojot SSH vai Samba.[CR][CR]Kodi instalācijai varat piekļūt, izmantojot \"/storage/.kodi.FAILED\" un Samba \"Kodi-Failed\" koplietojumus.[CR][CR]Pēc restarta atgriezīsies sākotnējā Kodi instalācija.[CR][CR]Ja jums ir nepieciešama papildu palīdzība, dodieties uz "". Rakstot forumā, iekļaujiet saiti uz jūsu avārijas žurnālu, kuru var apskatīt, noklikšķinot uz avārijas žurnāla opcijām sadaļā Iestatījumi > banditOS > Sistēma > Žurnāla nosūtīšana."
 
 msgctxt "#32395"
 msgid "Firewall"

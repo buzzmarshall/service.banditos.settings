@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Архитектура:"
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "LibreELEC создан глобальной командой энтузиастов Linux и Kodi, которые тратят время и усилия на управление проектом, написание кода и оказание поддержки. Нам весело делать это. Надеемся, вам понравится это!"
+msgstr "banditOS создан глобальной командой энтузиастов Linux и Kodi, которые тратят время и усилия на управление проектом, написание кода и оказание поддержки. Нам весело делать это. Надеемся, вам понравится это!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Поддержка[/B] предоставляется через наш форум:[CR]https://forum.libreelec.tv[CR][CR][B]Документацию[/B] можно прочитать в нашей вики:[CR]https://libreelec.wiki[CR][CR][B]Код[/B] можно найти на GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Пожертвования[/B] на расходы по проекту принимаются через PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Поддержка[/B] предоставляется через наш форум:[CR]""[CR][CR][B]Документацию[/B] можно прочитать в нашей вики:[CR]""[CR][CR][B]Код[/B] можно найти на GitHub:[CR]""[CR][CR][B]Пожертвования[/B] на расходы по проекту принимаются через """
 
 msgctxt "#700"
 msgid ""
@@ -605,7 +605,7 @@ msgstr "Неверная ссылка"
 
 msgctxt "#32196"
 msgid "About"
-msgstr "Об LibreELEC"
+msgstr "Об banditOS"
 
 msgctxt "#32198"
 msgid "SSID"
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@ временно запущен в безопасном режиме из-за повторяющихся сбоев Kodi.[CR][CR]Теперь вы можете выяснить причину сбоев, включив ssh или Samba.[CR][CR]К исходной установке Kodi можно получить доступ через \"/storage/.kodi.FAILED\" и общий ресурс Samba \"Kodi-Failed\".[CR][CR]Перезагрузка вернется к исходной установке Kodi.[CR][CR]Перейдите на https://forum.libreelec.tv, если вам нужна дополнительная помощь. При размещении сообщений на форуме включите ссылку на ваш журнал сбоев, который можно просмотреть, щелкнув параметр журнала сбоев в меню Настройки > LibreELEC >  Система > Отправить журнал."
+msgstr "@DISTRONAME@ временно запущен в безопасном режиме из-за повторяющихся сбоев Kodi.[CR][CR]Теперь вы можете выяснить причину сбоев, включив ssh или Samba.[CR][CR]К исходной установке Kodi можно получить доступ через \"/storage/.kodi.FAILED\" и общий ресурс Samba \"Kodi-Failed\".[CR][CR]Перезагрузка вернется к исходной установке Kodi.[CR][CR]Перейдите на "", если вам нужна дополнительная помощь. При размещении сообщений на форуме включите ссылку на ваш журнал сбоев, который можно просмотреть, щелкнув параметр журнала сбоев в меню Настройки > banditOS >  Система > Отправить журнал."
 
 msgctxt "#32395"
 msgid "Firewall"

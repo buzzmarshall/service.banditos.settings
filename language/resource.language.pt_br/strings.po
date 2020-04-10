@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Arquitetura:"
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "O LibreELEC é criado por uma equipe global de entusiastas de Linux e Kodi que contribuem com tempo e esforço para gerenciar o projeto, escrever código e fornecer suporte. Nós nos divertimos fazendo isso. Esperamos que você se divirta usando!"
+msgstr "O banditOS é criado por uma equipe global de entusiastas de Linux e Kodi que contribuem com tempo e esforço para gerenciar o projeto, escrever código e fornecer suporte. Nós nos divertimos fazendo isso. Esperamos que você se divirta usando!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Suporte[/B] é fornecido através do nosso fórum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentação[/B] pode ser lido em nosso wiki:[CR]https://libreelec.wiki[CR][CR][B]Código[/B] pode ser encontrado no GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Doações[/B] para as despesas do projeto são aceitas via PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Suporte[/B] é fornecido através do nosso fórum:[CR]""[CR][CR][B]Documentação[/B] pode ser lido em nosso wiki:[CR]""[CR][CR][B]Código[/B] pode ser encontrado no GitHub:[CR]""[CR][CR][B]Doações[/B] para as despesas do projeto são aceitas via """
 
 msgctxt "#700"
 msgid ""
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@ foi temporariamente iniciado em modo de segurança devido a falhas repetidas do Kodi.[CR][CR]Agora você pode investigar a causa das falhas ativando ssh ou Samba.[CR][CR]Sua instalação original do Kodi pode ser acessada via \"/storage/.kodi.FAILED\" e o compartilhamento \"Kodi-Failed\" do Samba.[CR][CR]A reinicialização voltará para a instalação original da Kodi.[CR][CR]Vá para https://forum.libreelec.tv se você precisar de mais assistência. Ao postar no fórum, inclua o link para o seu registro de falhas, que pode ser visualizado clicando na opção de registro de falhas em Configurações > LibreELEC > Sistema > Enviar Log."
+msgstr "@DISTRONAME@ foi temporariamente iniciado em modo de segurança devido a falhas repetidas do Kodi.[CR][CR]Agora você pode investigar a causa das falhas ativando ssh ou Samba.[CR][CR]Sua instalação original do Kodi pode ser acessada via \"/storage/.kodi.FAILED\" e o compartilhamento \"Kodi-Failed\" do Samba.[CR][CR]A reinicialização voltará para a instalação original da Kodi.[CR][CR]Vá para "" se você precisar de mais assistência. Ao postar no fórum, inclua o link para o seu registro de falhas, que pode ser visualizado clicando na opção de registro de falhas em Configurações > banditOS > Sistema > Enviar Log."
 
 msgctxt "#32395"
 msgid "Firewall"

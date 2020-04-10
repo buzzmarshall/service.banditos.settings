@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -45,11 +45,11 @@ msgid "Architecture: "
 msgstr ""
 
 msgctxt "#609"
-msgid "LibreELEC is created by a global team of Linux and Kodi enthusiasts who contribute time and effort to manage the project, write code, and provide support. We have fun making it. We hope you have fun using it!"
+msgid "banditOS is created by a global team of Linux and Kodi enthusiasts who contribute time and effort to manage the project, write code, and provide support. We have fun making it. We hope you have fun using it!"
 msgstr ""
 
 msgctxt "#610"
-msgid "[B]Support[/B] is provided via our forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
+msgid "[B]Support[/B] is provided via our forum:[CR]""[CR][CR][B]Documentation[/B] can be read in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on GitHub:[CR]""[CR][CR][B]""[/B] towards project expenses are accepted via """
 msgstr ""
 
 msgctxt "#700"
@@ -281,7 +281,7 @@ msgid "Checking for a new version will submit the installed Distribution, Projec
 msgstr ""
 
 msgctxt "#773"
-msgid "Set the idle timeout (in minutes) before devices will be disconnected (defaults to 0 for no timeout). Applies to devices where \"Enable Standby\" has been activated in the LibreELEC device connection context menu."
+msgid "Set the idle timeout (in minutes) before devices will be disconnected (defaults to 0 for no timeout). Applies to devices where \"Enable Standby\" has been activated in the banditOS device connection context menu."
 msgstr ""
 
 msgctxt "#32001"
@@ -1021,7 +1021,7 @@ msgid "** SAFE MODE! ** SAFE MODE! ** SAFE MODE! **"
 msgstr ""
 
 msgctxt "#32394"
-msgid "@DISTRONAME@ has temporarily started in safe mode due to repeated Kodi crashes.[CR][CR]You may now investigate the cause of the crashes by enabling ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via \"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" share.[CR][CR]Rebooting will return to your original Kodi installation.[CR][CR]Go to https://forum.libreelec.tv if you require further assistance. When posting to the forum include the link to your crash log which can be viewed by clicking the crash log option in Settings > LibreELEC > System > Submit Log."
+msgid "@DISTRONAME@ has temporarily started in safe mode due to repeated Kodi crashes.[CR][CR]You may now investigate the cause of the crashes by enabling ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via \"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" share.[CR][CR]Rebooting will return to your original Kodi installation.[CR][CR]Go to "" if you require further assistance. When posting to the forum include the link to your crash log which can be viewed by clicking the crash log option in Settings > banditOS > System > Submit Log."
 msgstr ""
 
 msgctxt "#32395"

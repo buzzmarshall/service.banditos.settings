@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Architektúra:"
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "A LibreELEC-et egy Linux és Kodi rajongók globális csapata hozza létre, akik időt és erőfeszítést tesznek a projekt kezelésére, kód írására és támogatásra. Szórakoztunk. Reméljük, hogy szórakoztathatod!"
+msgstr "A banditOS-et egy Linux és Kodi rajongók globális csapata hozza létre, akik időt és erőfeszítést tesznek a projekt kezelésére, kód írására és támogatásra. Szórakoztunk. Reméljük, hogy szórakoztathatod!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Támogatás[/B] a fórumunkon keresztül történik:[CR]https://forum.libreelec.tv[CR][CR][B]A dokumentáció[/B] a wikiben olvasható:[CR]https://libreelec.wiki[CR][CR][B]A kód[/B] megtalálható a GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]adományokkal[/B] a projektköltségeket PayPalon keresztül fogadják el:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Támogatás[/B] a fórumunkon keresztül történik:[CR]""[CR][CR][B]A dokumentáció[/B] a wikiben olvasható:[CR]""[CR][CR][B]A kód[/B] megtalálható a GitHub:[CR]""[CR][CR][B]adományokkal[/B] a projektköltségeket PayPalon keresztül fogadják el:[CR]"""
 
 msgctxt "#700"
 msgid ""
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "A @DISTRONAME@ átmenetileg biztonságos módban indult el a Kodi többszöri összeomlása miatt.[CR][CR]Kiderítheted az összeomlások okát úgy, hogy engedélyezed az ssh-t vagy a Sambat.[CR][CR]Az eredeti Kodi installációd elérhető a \"/storage/.kodi.FAILED\" könyvtárban és a \"Kodi-Failed\" Samba megosztáson.[CR][CR]Az újraindítás visszatér az eredeti Kodi telepítésedhez.[CR][CR]Látogass el a https://forum.libreelec.tv címre, ha további segítségre van szükséged. Amennyiben a fórumon írsz bejegyzést, tartalmazza a linket az összeomlási naplódhoz, mai a összeomlási napló opcióra kattintva érhető el itt: Beállítások > LibreELEC > Rendszer > Napló feltöltése."
+msgstr "A @DISTRONAME@ átmenetileg biztonságos módban indult el a Kodi többszöri összeomlása miatt.[CR][CR]Kiderítheted az összeomlások okát úgy, hogy engedélyezed az ssh-t vagy a Sambat.[CR][CR]Az eredeti Kodi installációd elérhető a \"/storage/.kodi.FAILED\" könyvtárban és a \"Kodi-Failed\" Samba megosztáson.[CR][CR]Az újraindítás visszatér az eredeti Kodi telepítésedhez.[CR][CR]Látogass el a "" címre, ha további segítségre van szükséged. Amennyiben a fórumon írsz bejegyzést, tartalmazza a linket az összeomlási naplódhoz, mai a összeomlási napló opcióra kattintva érhető el itt: Beállítások > banditOS > Rendszer > Napló feltöltése."
 
 msgctxt "#32395"
 msgid "Firewall"

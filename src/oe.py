@@ -26,8 +26,8 @@ import hashlib, binascii
 from xml.dom import minidom
 import imp
 
-__author__ = 'LibreELEC'
-__scriptid__ = 'service.libreelec.settings'
+__author__ = 'banditOS'
+__scriptid__ = 'service.banditos.settings'
 __addon__ = xbmcaddon.Addon(id=__scriptid__)
 __cwd__ = __addon__.getAddonInfo('path')
 __oe__ = sys.modules[globals()['__name__']]
@@ -82,7 +82,7 @@ imp.reload(sys)
 ## load oeSettings modules
 
 import oeWindows
-xbmc.log('## LibreELEC Addon ## ' + str(__addon__.getAddonInfo('version')))
+xbmc.log('## banditOS Addon ## ' + str(__addon__.getAddonInfo('version')))
 
 class ProgressDialog:
     def __init__(self, label1=32181, label2=32182, label3=32183, minSampleInterval=1.0, maxUpdatesPerSecond=5):
@@ -125,7 +125,7 @@ class ProgressDialog:
     def getSpeed(self):
         return self.speed
 
-    def open(self, heading='LibreELEC', line1='', line2='', line3=''):
+    def open(self, heading='banditOS', line1='', line2='', line3=''):
         self.dialog = xbmcgui.DialogProgress()
         self.dialog.create(heading, line1, line2, line3)
         self.reset()
@@ -174,7 +174,7 @@ class ProgressDialog:
         return self.cancelled
 
 def _(code):
-    wizardComp = read_setting('libreelec', 'wizard_completed')
+    wizardComp = read_setting('banditos', 'wizard_completed')
     if wizardComp == "True":
         codeNew = __addon__.getLocalizedString(code)
     else:
@@ -199,7 +199,7 @@ def _(code):
 def dbg_log(source, text, level=4):
     if level == 0 and os.environ.get('DEBUG', 'no') == 'no':
         return
-    xbmc.log('## LibreELEC Addon ## ' + source + ' ## ' + text, level)
+    xbmc.log('## banditOS Addon ## ' + source + ' ## ' + text, level)
     if level == 4:
         tracedata = traceback.format_exc()
         if tracedata != "NoneType: None\n":
@@ -498,7 +498,7 @@ def stop_service():
             module = dictModules[strModule]
             if hasattr(module, 'stop_service') and module.ENABLED:
                 module.stop_service()
-        xbmc.log('## LibreELEC Addon ## STOP SERVICE DONE !')
+        xbmc.log('## banditOS Addon ## STOP SERVICE DONE !')
     except Exception as e:
         dbg_log('oe::stop_service', 'ERROR: (' + repr(e) + ')')
 
@@ -506,9 +506,9 @@ def stop_service():
 def openWizard():
     global winOeMain, __cwd__, __oe__
     try:
-        winOeMain = oeWindows.wizard('service-LibreELEC-Settings-wizard.xml', __cwd__, 'Default', oeMain=__oe__)
+        winOeMain = oeWindows.wizard('service-banditOS-Settings-wizard.xml', __cwd__, 'Default', oeMain=__oe__)
         winOeMain.doModal()
-        winOeMain = oeWindows.mainWindow('service-LibreELEC-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)  # None
+        winOeMain = oeWindows.mainWindow('service-banditOS-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)  # None
     except Exception as e:
         dbg_log('oe::openWizard', 'ERROR: (' + repr(e) + ')')
 
@@ -549,7 +549,7 @@ def openConfigurationWindow():
                 timeLeft = "{0:.2f}".format((300 - PINnext)/60)
                 xbmcDialog.ok(_(32237), timeLeft + _(32238))
         if PINmatch == True:
-            winOeMain = oeWindows.mainWindow('service-LibreELEC-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)
+            winOeMain = oeWindows.mainWindow('service-banditOS-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)
             winOeMain.doModal()
             for strModule in dictModules:
                 dictModules[strModule].exit()
@@ -583,7 +583,7 @@ def load_config():
             config_text = ''
         if config_text == '':
             xml_conf = minidom.Document()
-            xml_main = xml_conf.createElement('libreelec')
+            xml_main = xml_conf.createElement('banditos')
             xml_conf.appendChild(xml_main)
             xml_sub = xml_conf.createElement('addon_config')
             xml_main.appendChild(xml_sub)
@@ -675,7 +675,7 @@ def write_setting(module, setting, value, main_node='settings'):
         xml_conf = load_config()
         xml_settings = xml_conf.getElementsByTagName(main_node)
         if len(xml_settings) == 0:
-            for xml_main in xml_conf.getElementsByTagName('libreelec'):
+            for xml_main in xml_conf.getElementsByTagName('banditos'):
                 xml_sub = xml_conf.createElement(main_node)
                 xml_main.appendChild(xml_sub)
                 xml_settings = xml_conf.getElementsByTagName(main_node)
@@ -707,7 +707,7 @@ def write_setting(module, setting, value, main_node='settings'):
 
 def load_modules():
 
-  # # load libreelec configuration modules
+  # # load banditos configuration modules
 
     try:
         global dictModules, __oe__, __cwd__, init_done
@@ -749,7 +749,7 @@ def split_dialog_text(text):
 
 def reboot_counter(seconds=10, title=' '):
     reboot_dlg = xbmcgui.DialogProgress()
-    reboot_dlg.create('LibreELEC %s' % title, ' ', ' ', ' ')
+    reboot_dlg.create('banditOS %s' % title, ' ', ' ', ' ')
     reboot_dlg.update(0)
     wait_time = seconds
     while seconds >= 0 and not reboot_dlg.iscanceled():
@@ -895,7 +895,7 @@ XBMC_USER_HOME = os.environ.get('XBMC_USER_HOME', '/storage/.kodi')
 CONFIG_CACHE = os.environ.get('CONFIG_CACHE', '/storage/.cache')
 USER_CONFIG = os.environ.get('USER_CONFIG', '/storage/.config')
 TEMP = '%s/temp/' % XBMC_USER_HOME
-winOeMain = oeWindows.mainWindow('service-LibreELEC-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)
+winOeMain = oeWindows.mainWindow('service-banditOS-Settings-mainWindow.xml', __cwd__, 'Default', oeMain=__oe__)
 if os.path.exists('/etc/machine-id'):
     SYSTEMID = load_file('/etc/machine-id')
 else:
@@ -911,20 +911,20 @@ BOOT_STATUS = load_file('/storage/.config/boot.status')
 ############################################################################################
 
 try:
-    configFile = '%s/userdata/addon_data/service.libreelec.settings/oe_settings.xml' % XBMC_USER_HOME
-    if not os.path.exists('%s/userdata/addon_data/service.libreelec.settings' % XBMC_USER_HOME):
+    configFile = '%s/userdata/addon_data/service.banditos.settings/oe_settings.xml' % XBMC_USER_HOME
+    if not os.path.exists('%s/userdata/addon_data/service.banditos.settings' % XBMC_USER_HOME):
         if os.path.exists('%s/userdata/addon_data/service.openelec.settings' % XBMC_USER_HOME):
             shutil.copytree(('%s/userdata/addon_data/service.openelec.settings' % XBMC_USER_HOME),
-                    ('%s/userdata/addon_data/service.libreelec.settings' % XBMC_USER_HOME))
+                    ('%s/userdata/addon_data/service.banditos.settings' % XBMC_USER_HOME))
             with open(configFile,'r+') as f:
                 xml = f.read()
-                xml = xml.replace("<openelec>","<libreelec>")
-                xml = xml.replace("</openelec>","</libreelec>")
+                xml = xml.replace("<openelec>","<banditos>")
+                xml = xml.replace("</openelec>","</banditos>")
                 f.seek(0)
                 f.write(xml)
                 f.truncate()
         else:
-            os.makedirs('%s/userdata/addon_data/service.libreelec.settings' % XBMC_USER_HOME)
+            os.makedirs('%s/userdata/addon_data/service.banditos.settings' % XBMC_USER_HOME)
     if not os.path.exists('%s/services' % CONFIG_CACHE):
         os.makedirs('%s/services' % CONFIG_CACHE)
 except:

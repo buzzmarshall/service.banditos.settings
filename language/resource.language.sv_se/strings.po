@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: @DISTRONAME@ Configuration
-# Addon id: service.libreelec.settings
-# Addon Provider: LibreELEC
+# Addon id: service.banditos.settings
+# Addon Provider: banditOS
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Arkitektur:"
 
 msgctxt "#609"
 msgid ""
-"LibreELEC is created by a global team of Linux and Kodi enthusiasts who "
+"banditOS is created by a global team of Linux and Kodi enthusiasts who "
 "contribute time and effort to manage the project, write code, and provide "
 "support. We have fun making it. We hope you have fun using it!"
-msgstr "LibreELEC är skapat av ett globalt team bestående av Linux- och Kodientusianster. De bidrar på olika sätt med tid, kod, projekthantering eller support. Vi har haft kul under tiden vi skapar det. Hoppas du har kul när du använder det!"
+msgstr "banditOS är skapat av ett globalt team bestående av Linux- och Kodientusianster. De bidrar på olika sätt med tid, kod, projekthantering eller support. Vi har haft kul under tiden vi skapar det. Hoppas du har kul när du använder det!"
 
 msgctxt "#610"
 msgid ""
 "[B]Support[/B] is provided via our "
-"forum:[CR]https://forum.libreelec.tv[CR][CR][B]Documentation[/B] can be read"
-" in our wiki:[CR]https://libreelec.wiki[CR][CR][B]Code[/B] can be found on "
-"GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donations[/B] towards "
-"project expenses are accepted via PayPal:[CR]donations@libreelec.tv"
-msgstr "[B]Support[B] tillhandahålls via vårt forum:[CR]https://forum.libreelec.tv[CR][CR][B]Dokumentation[/B] kan läsas i vår wiki:[CR]https://libreelec.wiki[CR][CR][B]Kod[/B] finns på GitHub:[CR]https://github.com/LibreELEC[CR][CR][B]Donationer[/B] för att ekonomiskt stötta projektets kostnader görs via  PayPal:[CR]donations@libreelec.tv"
+"forum:[CR]""[CR][CR][B]Documentation[/B] can be read"
+" in our wiki:[CR]""[CR][CR][B]Code[/B] can be found on "
+"GitHub:[CR]""[CR][CR][B]""[/B] towards "
+"project expenses are accepted via """
+msgstr "[B]Support[B] tillhandahålls via vårt forum:[CR]""[CR][CR][B]Dokumentation[/B] kan läsas i vår wiki:[CR]""[CR][CR][B]Kod[/B] finns på GitHub:[CR]""[CR][CR][B]Donationer[/B] för att ekonomiskt stötta projektets kostnader görs via  """
 
 msgctxt "#700"
 msgid ""
@@ -1010,11 +1010,11 @@ msgid ""
 " ssh or Samba.[CR][CR]Your original Kodi installation can be accessed via "
 "\"/storage/.kodi.FAILED\" and the Samba \"Kodi-Failed\" "
 "share.[CR][CR]Rebooting will return to your original Kodi "
-"installation.[CR][CR]Go to https://forum.libreelec.tv if you require further"
+"installation.[CR][CR]Go to "" if you require further"
 " assistance. When posting to the forum include the link to your crash log "
-"which can be viewed by clicking the crash log option in Settings > LibreELEC"
+"which can be viewed by clicking the crash log option in Settings > banditOS"
 " > System > Submit Log."
-msgstr "@DISTRONAME@ har tillfälligt startat i felsäkert läge eftersom Kodi kraschat upprepade gånger.[CR][CR]Du kan undersöka vad som orsakat felen genom att sätta igång ssh eller Samba.[CR][CR]Din original- Kodi-installation kan kommas åt via \"/storage/.kodi.FAILED\" och genom Samba \"Kodi-Failed\" utdelning.[CR][CR]Starta om för att återgå till din original-Kodi-installation.[CR][CR]Besök https://forum.libreelec.tv om du behöver mer hjälp. När du postar i forumet kan du inkludera en länk till din crash-logg som du kan nå via crash-logg inställningarna under Inställningar > LibreELEC > System > Skicka logg."
+msgstr "@DISTRONAME@ har tillfälligt startat i felsäkert läge eftersom Kodi kraschat upprepade gånger.[CR][CR]Du kan undersöka vad som orsakat felen genom att sätta igång ssh eller Samba.[CR][CR]Din original- Kodi-installation kan kommas åt via \"/storage/.kodi.FAILED\" och genom Samba \"Kodi-Failed\" utdelning.[CR][CR]Starta om för att återgå till din original-Kodi-installation.[CR][CR]Besök "" om du behöver mer hjälp. När du postar i forumet kan du inkludera en länk till din crash-logg som du kan nå via crash-logg inställningarna under Inställningar > banditOS > System > Skicka logg."
 
 msgctxt "#32395"
 msgid "Firewall"
