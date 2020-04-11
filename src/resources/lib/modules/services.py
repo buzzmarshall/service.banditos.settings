@@ -661,7 +661,7 @@ class services:
             SSHchange = False
             newpwd = xbmcDialog.input(self.oe._(746))
             if newpwd:
-                if newpwd == "libreelec":
+                if newpwd == "banditos":
                     self.oe.execute('cp -fp /usr/cache/shadow /storage/.cache/shadow')
                     readout3 = "Retype password"
                 else:
