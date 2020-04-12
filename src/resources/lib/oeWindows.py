@@ -294,12 +294,12 @@ class mainWindow(xbmcgui.WindowXMLDialog):
                         selectedItem.setProperty('value', str(returnValue))
                 elif strTyp == 'folder':
                     xbmcDialog = xbmcgui.Dialog()
-                    returnValue = xbmcDialog.browse(0, 'banditos', 'files', '', False, False, '/storage')
+                    returnValue = xbmcDialog.browse(0, 'banditOS', 'files', '', False, False, '/storage')
                     if returnValue != '' and returnValue != '/':
                         selectedItem.setProperty('value', str(returnValue))
                 elif strTyp == 'ip':
                     xbmcDialog = xbmcgui.Dialog()
-                    returnValue = xbmcDialog.numeric(3, 'banditos', strValue)
+                    returnValue = xbmcDialog.numeric(3, 'banditOS', strValue)
                     if returnValue != '':
                         if returnValue == '0.0.0.0':
                             selectedItem.setProperty('value', '')
@@ -309,7 +309,7 @@ class mainWindow(xbmcgui.WindowXMLDialog):
                     if strValue == 'None' or strValue == '':
                         strValue = '0'
                     xbmcDialog = xbmcgui.Dialog()
-                    returnValue = xbmcDialog.numeric(0, 'banditos', strValue)
+                    returnValue = xbmcDialog.numeric(0, 'banditOS', strValue)
                     if returnValue == '':
                         returnValue = -1
                     if returnValue > -1:
