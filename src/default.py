@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2013 Lutz Fiebach (lufie@openelec.tv)
-# Copyright (C) 2019-present Team LibreELEC (https://libreelec.tv)
 
 import xbmc
 import socket
@@ -16,7 +15,7 @@ _ = __addon__.getLocalizedString
 try:
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.connect('/var/run/service.banditos.settings.sock')
-    sock.send(bytes('openConfigurationWindow', 'utf-8'))
+    sock.send('openConfigurationWindow')
     sock.close()
-except Exception as e:
-    xbmc.executebuiltin('Notification("banditOS", "%s", 5000, "%s/icon.png")' % (_(32390), __media__))
+except Exception, e:
+    xbmc.executebuiltin('Notification("banditOS", "%s", 5000, "%s/icon.png")' % (_(32390).encode('utf-8'), __media__))

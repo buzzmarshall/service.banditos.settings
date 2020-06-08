@@ -3,7 +3,7 @@
 # Copyright (C) 2013 Lutz Fiebach (lufie@openelec.tv)
 
 ADDON_NAME=service.banditos.settings
-ADDON_VERSION=9.8.0
+ADDON_VERSION=9.0.0
 DISTRONAME:=banditOS
 
 SHELL=/bin/bash

@@ -12,6 +12,7 @@ import uuid
 import xbmcgui
 import threading
 import oeWindows
+import ConfigParser
 import random
 import string
 
@@ -288,7 +289,7 @@ class connmanService(object):
             self.service = dbus.Interface(self.oe.dbusSystemBus.get_object('net.connman', servicePath), 'net.connman.Service')
             self.service_properties = self.service.GetProperties()
             for entry in sorted(self.datamap):
-                for (key, value) in self.datamap[entry].items():
+                for (key, value) in self.datamap[entry].iteritems():
                     if self.struct[value]['type'] == 'Boolean':
                         if key in self.service_properties:
                             self.struct[value]['settings'][value]['value'] = self.service_properties[key]
@@ -316,7 +317,7 @@ class connmanService(object):
             del self.winOeCon
             del self.oe.dictModules['connmanNetworkConfig']
             self.oe.dbg_log('connmanService::__init__', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connmanService::__init__', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -327,7 +328,7 @@ class connmanService(object):
             self.winOeCon.close()
             self.oe.set_busy(0)
             self.oe.dbg_log('connmanService::cancel', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connmanService::cancel', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -338,7 +339,7 @@ class connmanService(object):
             self.winOeCon.showButton(2, 32212, 'connmanNetworkConfig', 'cancel')
             self.winOeCon.build_menu(self.struct, fltr=[menuItem.getProperty('category')])
             self.oe.dbg_log('connmanService::menu_loader', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::menu_loader', 'ERROR: (' + repr(e) + ')', 4)
 
     def set_value_checkdhcp(self, listItem):
@@ -351,7 +352,7 @@ class connmanService(object):
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['value'] = listItem.getProperty('value')
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['changed'] = True
             self.oe.dbg_log('connmanService::set_value_checkdhcp', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::set_value_checkdhcp', 'ERROR: (' + repr(e) + ')', 4)
 
     def set_value(self, listItem):
@@ -360,7 +361,7 @@ class connmanService(object):
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['value'] = listItem.getProperty('value')
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['changed'] = True
             self.oe.dbg_log('connmanService::set_value', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::set_value', 'ERROR: (' + repr(e) + ')', 4)
 
     def dbus_config(self, category):
@@ -392,7 +393,7 @@ class connmanService(object):
                         elif self.struct[category]['type'] == 'Array':
                             value.append(getattr(dbus, setting['dbus'])(setting['value'], variant_level=1))
             return (category + postfix, value)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::dbus_config', 'ERROR: (' + repr(e) + ')', 4)
 
     def save_network(self):
@@ -423,7 +424,7 @@ class connmanService(object):
             self.oe.dbg_log('connmanService::save_network', 'exit_function', 0)
             self.oe.set_busy(0)
             return 'close'
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connmanService::save_network', 'ERROR: (' + repr(e) + ')', 4)
             return 'close'
@@ -434,7 +435,7 @@ class connmanService(object):
             self.oe.dictModules['connman'].delete_network(None)
             self.oe.dbg_log('connmanService::delete_network', 'exit_function', 0)
             return 'close'
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::delete_network', 'ERROR: (' + repr(e) + ')', 4)
             return 'close'
 
@@ -444,7 +445,7 @@ class connmanService(object):
             self.oe.dictModules['connman'].connect_network(None)
             self.oe.dbg_log('connmanService::connect_network', 'exit_function', 0)
             return 'close'
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::connect_network', 'ERROR: (' + repr(e) + ')', 4)
             return 'close'
 
@@ -454,7 +455,7 @@ class connmanService(object):
             self.oe.dictModules['connman'].disconnect_network(None)
             self.oe.dbg_log('connmanService::disconnect_network', 'exit_function', 0)
             return 'close'
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connmanService::disconnect_network', 'ERROR: (' + repr(e) + ')', 4)
             return 'close'
 
@@ -469,8 +470,6 @@ class connman:
     CONNMAN_DAEMON = None
     WAIT_CONF_FILE = None
     NF_CUSTOM_PATH = "/storage/.config/iptables/"
-    REGDOMAIN_CONF = "/storage/.cache/regdomain.conf"
-    REGDOMAIN_DEFAULT = "NOT SET (DEFAULT)"
     connect_attempt = 0
     log_error = 1
     net_disconnected = 0
@@ -551,19 +550,6 @@ class connman:
                             'validate': '^[\\x00-\\x7F]{8,64}$',
                             'InfoText': 729,
                             },
-                        'regdom': {
-                            'order': 5,
-                            'name': 32240,
-                            'value': '',
-                            'action': 'custom_regdom',
-                            'type': 'multivalue',
-                            'values': [],
-                            'parent': {
-                                'entry': 'Powered',
-                                'value': ['1'],
-                                },
-                            'InfoText': 749,
-                            },
                         },
                     'order': 0,
                     },
@@ -580,7 +566,7 @@ class connman:
                         'type': 'bool',
                         'dbus': 'Boolean',
                         'InfoText': 730,
-                        },},
+                        }},
                     'order': 1,
                     },
                 'Timeservers': {
@@ -662,7 +648,7 @@ class connman:
             self.oe = oeMain
             self.visible = False
             self.oe.dbg_log('connman::__init__', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::__init__', 'ERROR: (' + repr(e) + ')', 4)
 
     def clear_list(self):
@@ -671,7 +657,7 @@ class connman:
             for entry in remove:
                 self.listItems[entry] = None
                 del self.listItems[entry]
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::clear_list', 'ERROR: (' + repr(e) + ')', 4)
 
     def do_init(self):
@@ -679,7 +665,7 @@ class connman:
             self.oe.dbg_log('connman::do_init', 'enter_function', 0)
             self.visible = True
             self.oe.dbg_log('connman::do_init', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::do_init', 'ERROR: (' + repr(e) + ')', 4)
 
     def exit(self):
@@ -688,7 +674,7 @@ class connman:
             self.visible = False
             self.clear_list()
             self.oe.dbg_log('connman::exit', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::exit', 'ERROR: (' + repr(e) + ')', 4)
 
     def load_values(self):
@@ -731,189 +717,8 @@ class connman:
                 nf_option_str = self.oe._(32397)
             self.struct['advanced']['settings']['netfilter']['value'] = nf_option_str
 
-            # CUSTOM regdom
-            regList = [
-                self.REGDOMAIN_DEFAULT,
-                "GLOBAL (00)",
-                "Afghanistan (AF)",
-                "Albania (AL)",
-                "Algeria (DZ)",
-                "American Samoa (AS)",
-                "Andorra (AD)",
-                "Anguilla (AI)",
-                "Argentina (AR)",
-                "Armenia (AM)",
-                "Aruba (AW)",
-                "Australia (AU)",
-                "Austria (AT)",
-                "Azerbaijan (AZ)",
-                "Bahamas (BS)",
-                "Bahrain (BH)",
-                "Bangladesh (BD)",
-                "Barbados (BB)",
-                "Belarus (BY)",
-                "Belgium (BE)",
-                "Belize (BZ)",
-                "Bermuda (BM)",
-                "Bhutan (BT)",
-                "Bolivia (BO)",
-                "Bosnia and Herzegovina (BA)",
-                "Brazil (BR)",
-                "Brunei Darussalam (BN)",
-                "Bulgaria (BG)",
-                "Burkina Faso (BF)",
-                "Cambodia (KH)",
-                "Canada (CA)",
-                "Cayman Islands (KY)",
-                "Central African Republic (CF)",
-                "Chad (TD)",
-                "Chile (CL)",
-                "China (CN)",
-                "Christmas Island (CX)",
-                "Colombia (CO)",
-                "Costa Rica (CR)",
-                "Côte d'Ivoire (CI)",
-                "Croatia (HR)",
-                "Cyprus (CY)",
-                "Czechia (CZ)",
-                "Denmark (DK)",
-                "Dominica (DM)",
-                "Dominican Republic (DO)",
-                "Ecuador (EC)",
-                "Egypt (EG)",
-                "El Salvador (SV)",
-                "Estonia (EE)",
-                "Ethiopia (ET)",
-                "Finland (FI)",
-                "France (FR)",
-                "French Guiana (GF)",
-                "French Polynesia (PF)",
-                "Georgia (GE)",
-                "Germany (DE)",
-                "Ghana (GH)",
-                "Greece (GR)",
-                "Greenland (GL)",
-                "Grenada (GD)",
-                "Guadelope (GP)",
-                "Guam (GU)",
-                "Guatemala (GT)",
-                "Guyana (GY)",
-                "Haiti (HT)",
-                "Honduras (HN)",
-                "Hong Kong (HK)",
-                "Hungary (HU)",
-                "Iceland (IS)",
-                "India (IN)",
-                "Indonesia (ID)",
-                "Iran (IR)",
-                "Ireland (IE)",
-                "Israel (IL)",
-                "Italy (IT)",
-                "Jamaica (JM)",
-                "Japan (JP)",
-                "Jordan (JO)",
-                "Kazakhstan (KZ)",
-                "Kenya (KE)",
-                "Korea (North) (KP)",
-                "Korea (South) (KR)",
-                "Kuwait (KW)",
-                "Latvia (LV)",
-                "Lebanon (LB)",
-                "Lesotho (LS)",
-                "Liechtenstein (LI)",
-                "Lithuania (LT)",
-                "Luxembourg (LU)",
-                "Macao (MO)",
-                "Malawi (MW)",
-                "Malaysia (MY)",
-                "Malta (MT)",
-                "Marshall Islands (MH)",
-                "Martinique (MQ)",
-                "Mauritania (MR)",
-                "Mauritius (MU)",
-                "Mayotte (YT)",
-                "Mexico (MX)",
-                "Micronesian (FM)",
-                "Moldova (MD)",
-                "Monaco (MC)",
-                "Mongolia (MN)",
-                "Montenegro (ME)",
-                "Morocco (MA)",
-                "Nepal (NP)",
-                "Netherlands (NL)",
-                "New Zealand (NZ)",
-                "Nicaragua (NI)",
-                "North Macedonia (MK)",
-                "Northern Mariana Islands (MP)",
-                "Norway (NO)",
-                "Oman (OM)",
-                "Pakistan (PK)",
-                "Palau (PW)",
-                "Panama (PA)",
-                "Papua New Guinea (PG)",
-                "Paraguay (PY)",
-                "Peru (PE)",
-                "Philipines (PH)",
-                "Poland (PL)",
-                "Portugal (PT)",
-                "Puerto Rico (PR)",
-                "Qatar (QA)",
-                "Réunion (RE)",
-                "Romania (RO)",
-                "Russian Federation (RU)",
-                "Rwanda (RW)",
-                "Saint Barthélemy (BL)",
-                "Saint Kitts and Nevis (KN)",
-                "Saint Lucia (LC)",
-                "Saint Martin (MF)",
-                "Saint Pierre and Miquelon (PM)",
-                "Saint Vincent and the Grenadines (VC)",
-                "Saudi Arabia (SA)",
-                "Senegal (SN)",
-                "Serbia (RS)",
-                "Singapore (SG)",
-                "Slovakia (SK)",
-                "Slovenia (SI)",
-                "South Africa (ZA)",
-                "Spain (ES)",
-                "Sri Lanka (LK)",
-                "Suriname (SR)",
-                "Sweden (SE)",
-                "Switzerland (CH)",
-                "Syria (SY)",
-                "Taiwan (TW)",
-                "Thailand (TH)",
-                "Togo (TG)",
-                "Trinidan and Tobago (TT)",
-                "Tunisia (TN)",
-                "Turkey (TR)",
-                "Turks and Caicos Islands (TC)",
-                "Uganda (UG)",
-                "Ukraine (UA)",
-                "United Arab Emirates (AE)",
-                "United Kingdom (GB)",
-                "United States (US)",
-                "Uraguay (UY)",
-                "Uzbekistan (UZ)",
-                "Vanuatu (VU)",
-                "Venzuela (VE)",
-                "Vietnam (VN)",
-                "Virgin Islands (VI)",
-                "Wallis and Futuna (WF)",
-                "Yemen (YE)",
-                "Zimbabwe (ZW)"
-                ]
-            self.struct['/net/connman/technology/wifi']['settings']['regdom']['values'] = regList
-            if os.path.isfile(self.REGDOMAIN_CONF):
-                regLine = open(self.REGDOMAIN_CONF).readline().rstrip()
-                regCode = '(%s)' % regLine[-2:]
-                regValue = next((v for v in regList if regCode in v), self.REGDOMAIN_DEFAULT)
-            else:
-                regValue = self.REGDOMAIN_DEFAULT
-            self.struct['/net/connman/technology/wifi']['settings']['regdom']['value'] = str(regValue)
             self.oe.dbg_log('connman::load_values', 'exit_function', 0)
-
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::load_values', 'ERROR: (' + repr(e) + ')')
 
     def menu_connections(self, focusItem, services={}, removed={}, force=False):
@@ -991,7 +796,7 @@ class connman:
                         apName = dbusServiceProperties['Name']
                     else:
                         if 'Security' in dbusServiceProperties:
-                            apName = self.oe._(32208) + ' (' + str(dbusServiceProperties['Security'][0]) + ')'
+                            apName = self.oe._(32208) + ' (' + unicode(dbusServiceProperties['Security'][0]) + ')'
                         else:
                             apName = ''
                     if apName != '':
@@ -1010,16 +815,16 @@ class connman:
                             properties[prop]['flag'] = 0
                     if properties[prop]['flag'] == 1:
                         if properties[prop]['type'] == 1:
-                            result = str(int(result))
+                            result = unicode(int(result))
                         if properties[prop]['type'] == 2:
-                            result = str(result)
+                            result = unicode(result)
                         if properties[prop]['type'] == 3:
                             if any(x in result for x in ['psk','ieee8021x','wep']):
-                                result = str('1')
+                                result = unicode('1')
                             elif 'none' in result:
-                                result = str('0')
+                                result = unicode('0')
                             else:
-                                result = str('-1')
+                                result = unicode('-1')
                         if rebuildList == 1:
                             dictProperties[value] = result
                         else:
@@ -1029,7 +834,7 @@ class connman:
                     self.listItems[dbusServicePath] = self.oe.winOeMain.addConfigItem(apName, dictProperties, self.oe.listObject['netlist'])
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::menu_connections', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::menu_connections', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1052,7 +857,7 @@ class connman:
                         del self.struct[path]['hidden']
                     for entry in self.struct[path]['settings']:
                         if entry in technologie:
-                            self.struct[path]['settings'][entry]['value'] = str(technologie[entry])
+                            self.struct[path]['settings'][entry]['value'] = unicode(technologie[entry])
             for setting in self.struct['Timeservers']['settings']:
                 if 'Timeservers' in self.clock_properties:
                     if int(setting) < len(self.clock_properties['Timeservers']):
@@ -1062,7 +867,7 @@ class connman:
             self.oe.winOeMain.build_menu(self.struct)
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::menu_loader', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::menu_loader', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1105,16 +910,16 @@ class connman:
                         break
             items = []
             actions = []
-            for key in list(values.keys()):
+            for key in values.keys():
                 items.append(values[key]['text'])
                 actions.append(values[key]['action'])
             select_window = xbmcgui.Dialog()
-            title = self.oe._(32012)
+            title = self.oe._(32012).encode('utf-8')
             result = select_window.select(title, items)
             if result >= 0:
                 getattr(self, actions[result])(listItem)
             self.oe.dbg_log('connman::open_context_menu', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::open_context_menu', 'ERROR: (' + repr(e) + ')', 4)
 
     def set_timeservers(self, **kwargs):
@@ -1131,7 +936,7 @@ class connman:
             self.clock.SetProperty(dbus.String('Timeservers'), timeservers)
             self.oe.dbg_log('connman::set_timeservers', 'exit_function', 0)
             self.oe.set_busy(0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::set_timeservers', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1141,7 +946,7 @@ class connman:
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['value'] = listItem.getProperty('value')
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['changed'] = True
             self.oe.dbg_log('connman::set_value', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::set_value', 'ERROR: (' + repr(e) + ')', 4)
 
     def set_technologie(self, **kwargs):
@@ -1196,31 +1001,9 @@ class connman:
             self.menu_loader(None)
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::set_technologies', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::set_technologies', 'ERROR: (' + repr(e) + ')', 4)
-
-    def custom_regdom(self, **kwargs):
-        try:
-            self.oe.dbg_log('connman::custom_regdom', 'enter_function', 0)
-            self.oe.set_busy(1)
-            if 'listItem' in kwargs:
-                if str((kwargs['listItem']).getProperty('value')) == self.REGDOMAIN_DEFAULT:
-                    os.remove(self.REGDOMAIN_CONF)
-                    regScript = 'iw reg set 00'
-                else:
-                    regSelect = str((kwargs['listItem']).getProperty('value'))
-                    regCode = regSelect[-3:-1]
-                    with open(self.REGDOMAIN_CONF, 'w') as regfile:
-                        regfile.write('REGDOMAIN=%s\n' % regCode)
-                    regScript = 'iw reg set %s' % regCode
-                self.oe.execute(regScript)
-                self.set_value(kwargs['listItem'])
-            self.oe.set_busy(0)
-            self.oe.dbg_log('connman::custom_regdom', 'exit_function', 0)
-        except Exception as e:
-            self.oe.set_busy(0)
-            self.oe.dbg_log('connman::custom_regdom', 'ERROR: (' + repr(e) + ')', 4)
 
     def configure_network(self, listItem=None):
         try:
@@ -1231,7 +1014,7 @@ class connman:
             del self.configureService
             self.menu_connections(None)
             self.oe.dbg_log('connman::configure_network', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::configure_network', 'ERROR: (' + repr(e) + ')', 4)
 
     def connect_network(self, listItem=None):
@@ -1246,7 +1029,7 @@ class connman:
                     error_handler=self.dbus_error_handler)
             service_object = None
             self.oe.dbg_log('connman::connect_network', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::connect_network', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1256,7 +1039,7 @@ class connman:
             self.oe.set_busy(0)
             self.menu_connections(None)
             self.oe.dbg_log('connman::connect_reply_handler', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::connect_reply_handler', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1297,7 +1080,7 @@ class connman:
                 else:
                     self.log_error = 1
             self.oe.dbg_log('connman::dbus_error_handler', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::dbus_error_handler', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1315,7 +1098,7 @@ class connman:
             del service_object
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::disconnect_network', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::disconnect_network', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1334,7 +1117,7 @@ class connman:
             del service_object
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::delete_network', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::delete_network', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1349,7 +1132,7 @@ class connman:
             self.oe.set_busy(0)
             self.menu_connections(None)
             self.oe.dbg_log('connman::refresh_network', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::refresh_network', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -1362,7 +1145,7 @@ class connman:
                 listItem = self.oe.winOeMain.getControl(self.oe.listObject['netlist']).getSelectedItem()
                 return listItem.getProperty('entry')
             self.oe.dbg_log('connman::get_service_path', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::get_service_path', 'ERROR: (' + repr(e) + ')', 4)
 
     def start_service(self):
@@ -1371,7 +1154,7 @@ class connman:
             self.load_values()
             self.init_netfilter(service=1)
             self.oe.dbg_log('connman::start_service', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::start_service', 'ERROR: (' + repr(e) + ')')
 
     def stop_service(self):
@@ -1381,7 +1164,7 @@ class connman:
                 self.dbusConnmanManager = None
                 del self.dbusConnmanManager
             self.oe.dbg_log('connman::stop_service', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('system::stop_service', 'ERROR: (' + repr(e) + ')')
 
     def set_network_wait(self, **kwargs):
@@ -1401,7 +1184,7 @@ class connman:
                 wait_conf.write('WAIT_NETWORK_TIME="%s"\n' % self.struct['advanced']['settings']['wait_for_network_time']['value'])
                 wait_conf.close()
             self.oe.dbg_log('connman::set_network_wait', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('system::set_network_wait', 'ERROR: (' + repr(e) + ')')
 
     def init_netfilter(self, **kwargs):
@@ -1423,7 +1206,7 @@ class connman:
             self.oe.set_service('iptables', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('connman::init_netfilter', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('system::init_netfilter', 'ERROR: (' + repr(e) + ')')
 
     def do_wizard(self):
@@ -1446,7 +1229,7 @@ class connman:
 
             self.menu_connections(None)
             self.oe.dbg_log('connman::do_wizard', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::do_wizard', 'ERROR: (' + repr(e) + ')')
 
     class monitor:
@@ -1460,7 +1243,7 @@ class connman:
                 self.parent = parent
                 self.wifiAgentPath = '/banditOS/agent_wifi'
                 self.oe.dbg_log('connman::monitor::__init__', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::__init__', 'ERROR: (' + repr(e) + ')')
 
         def add_signal_receivers(self):
@@ -1478,7 +1261,7 @@ class connman:
                                              signal_name='PropertyChanged', path_keyword='path', interface_keyword='interface'))
                 self.conNameOwnerWatch = self.oe.dbusSystemBus.watch_name_owner('net.connman', self.conNameOwnerChanged)
                 self.oe.dbg_log('connman::monitor::add_signal_receivers', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::add_signal_receivers', 'ERROR: (' + repr(e) + ')', 4)
 
         def remove_signal_receivers(self):
@@ -1492,7 +1275,7 @@ class connman:
                 if hasattr(self, 'wifiAgent'):
                     self.remove_agent()
                 self.oe.dbg_log('connman::monitor::remove_signal_receivers', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::remove_signal_receivers', 'ERROR: (' + repr(e) + ')', 4)
 
         def conNameOwnerChanged(self, proxy):
@@ -1503,7 +1286,7 @@ class connman:
                 else:
                     self.remove_agent()
                 self.oe.dbg_log('connman::monitor::nameOwnerChanged', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::nameOwnerChanged', 'ERROR: (' + repr(e) + ')', 4)
 
         def initialize_agent(self):
@@ -1516,7 +1299,7 @@ class connman:
                     dbusConnmanManager.RegisterAgent(self.wifiAgentPath)
                     dbusConnmanManager = None
                 self.oe.dbg_log('connman::monitor::initialize_agent', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::initialize_agent', 'ERROR: (' + repr(e) + ')', 4)
 
         def remove_agent(self):
@@ -1532,7 +1315,7 @@ class connman:
                         dbusConnmanManager = None
                     del self.wifiAgent
                 self.oe.dbg_log('connman::monitor::remove_agent', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::remove_agent', 'ERROR: (' + repr(e) + ')', 4)
 
         def managerPropertyChanged(self, name, value, path, interface):
@@ -1543,7 +1326,7 @@ class connman:
                 self.oe.dbg_log('connman::monitor::managerPropertyChanged::path', repr(path), 0)
                 self.oe.dbg_log('connman::monitor::managerPropertyChanged::interface', repr(interface), 0)
                 self.oe.dbg_log('connman::monitor::managerPropertyChanged', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::managerPropertyChanged', 'ERROR: (' + repr(e) + ')', 4)
 
         def propertyChanged(self, name, value, path):
@@ -1555,7 +1338,7 @@ class connman:
                 if self.parent.visible:
                     self.updateGui(name, value, path)
                 self.oe.dbg_log('connman::monitor::propertyChanged', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::propertyChanged', 'ERROR: (' + repr(e) + ')', 4)
 
         def technologyChanged(self, name, value, path):
@@ -1571,7 +1354,7 @@ class connman:
                     else:
                         self.updateGui(name, value, path)
                 self.oe.dbg_log('connman::monitor::technologyChanged', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::technologyChanged', 'ERROR: (' + repr(e) + ')', 4)
 
         def servicesChanged(self, services, removed):
@@ -1582,30 +1365,30 @@ class connman:
                 if self.parent.visible:
                     self.parent.menu_connections(None, services, removed, force=True)
                 self.oe.dbg_log('connman::monitor::servicesChanged', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::servicesChanged', 'ERROR: (' + repr(e) + ')', 4)
 
         def updateGui(self, name, value, path):
             try:
                 self.oe.dbg_log('connman::monitor::updateGui', 'enter_function', 0)
                 if name == 'Strength':
-                    value = str(int(value))
+                    value = unicode(int(value))
                     self.parent.listItems[path].setProperty(name, value)
                     self.forceRender()
                 elif name == 'State':
-                    value = str(value)
+                    value = unicode(value)
                     self.parent.listItems[path].setProperty(name, value)
                     self.forceRender()
                 elif name == 'IPv4':
                     if 'Address' in value:
-                        value = str(value['Address'])
+                        value = unicode(value['Address'])
                         self.parent.listItems[path].setProperty('Address', value)
                     if 'Method' in value:
-                        value = str(value['Method'])
+                        value = unicode(value['Method'])
                         self.parent.listItems[path].setProperty('Address', value)
                     self.forceRender()
                 elif name == 'Favorite':
-                    value = str(int(value))
+                    value = unicode(int(value))
                     self.parent.listItems[path].setProperty(name, value)
                     self.forceRender()
                 if hasattr(self.parent, 'is_wizard'):
@@ -1614,7 +1397,7 @@ class connman:
             except KeyError:
                 self.oe.dbg_log('connman::monitor::updateGui', 'exit_function (KeyError)', 0)
                 self.parent.menu_connections(None, {}, {}, force=True)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::updateGui', 'ERROR: (' + repr(e) + ')', 4)
 
         def forceRender(self):
@@ -1624,7 +1407,7 @@ class connman:
                 self.oe.winOeMain.setFocusId(self.oe.listObject['netlist'])
                 self.oe.winOeMain.setFocusId(focusId)
                 self.oe.dbg_log('connman::monitor::forceRender', 'exit_function', 0)
-            except Exception as e:
+            except Exception, e:
                 self.oe.dbg_log('connman::monitor::forceRender', 'ERROR: (' + repr(e) + ')', 4)
 
 
@@ -1665,8 +1448,8 @@ class connmanWifiAgent(dbus.service.Object):
             self.oe.dbg_log('connman::connmanWifiAgent::RequestInput', 'enter_function', 0)
             self.oe.input_request = True
             response = {}
-            if 'Name' in fields:
-                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32146))
+            if fields.has_key('Name'):
+                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32146).encode('utf-8'))
                 xbmcKeyboard.doModal()
                 if xbmcKeyboard.isConfirmed():
                     if xbmcKeyboard.getText() != '':
@@ -1679,15 +1462,15 @@ class connmanWifiAgent(dbus.service.Object):
                     self.busy()
                     raise Canceled('canceled')
                     return response
-            if 'Passphrase' in fields:
-                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32147))
+            if fields.has_key('Passphrase'):
+                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32147).encode('utf-8'))
                 xbmcKeyboard.doModal()
                 if xbmcKeyboard.isConfirmed():
                     if xbmcKeyboard.getText() != '':
                         response['Passphrase'] = xbmcKeyboard.getText()
-                        if 'Identity' in fields:
+                        if fields.has_key('Identity'):
                             response['Identity'] = xbmcKeyboard.getText()
-                        if 'wpspin' in fields:
+                        if fields.has_key('wpspin'):
                             response['wpspin'] = xbmcKeyboard.getText()
                     else:
                         self.busy()
@@ -1697,8 +1480,8 @@ class connmanWifiAgent(dbus.service.Object):
                     self.busy()
                     raise Canceled('canceled')
                     return response
-            if 'Username' in fields:
-                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32148))
+            if fields.has_key('Username'):
+                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32148).encode('utf-8'))
                 xbmcKeyboard.doModal()
                 if xbmcKeyboard.isConfirmed():
                     if xbmcKeyboard.getText() != '':
@@ -1711,8 +1494,8 @@ class connmanWifiAgent(dbus.service.Object):
                     self.busy()
                     raise Canceled('canceled')
                     return response
-            if 'Password' in fields:
-                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32148), True)
+            if fields.has_key('Password'):
+                xbmcKeyboard = xbmc.Keyboard('', self.oe._(32148).encode('utf-8'), True)
                 xbmcKeyboard.doModal()
                 if xbmcKeyboard.isConfirmed():
                     if xbmcKeyboard.getText() != '':
@@ -1728,7 +1511,7 @@ class connmanWifiAgent(dbus.service.Object):
             self.busy()
             self.oe.dbg_log('connman::connmanWifiAgent::RequestInput', 'exit_function', 0)
             return response
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('connman::connmanWifiAgent::RequestInput', 'ERROR: (' + repr(e) + ')', 4)
 
     @dbus.service.method('net.connman.Agent', in_signature='os', out_signature='')

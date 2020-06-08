@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2013 Lutz Fiebach (lufie@openelec.tv)
-# Copyright (C) 2019-present Team LibreELEC (https://libreelec.tv)
 
 import os
 import glob
@@ -254,34 +253,13 @@ class services:
                                 },
                             'InfoText': 752,
                             },
-                        'idle_timeout': {
-                            'order': 4,
-                            'name': 32400,
-                            'value': None,
-                            'action': 'idle_timeout',
-                            'type': 'multivalue',
-                            'values': [
-                                '0',
-                                '1',
-                                '3',
-                                '5',
-                                '15',
-                                '30',
-                                '60',
-                                ],
-                            'parent': {
-                                'entry': 'enabled',
-                                'value': ['1'],
-                                },
-                            'InfoText': 773,
-                            },
                         },
                     },
                 }
 
             self.oe = oeMain
             oeMain.dbg_log('services::__init__', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::__init__', 'ERROR: (%s)' % repr(e))
 
     def start_service(self):
@@ -294,14 +272,14 @@ class services:
             self.initialize_cron(service=1)
             self.init_bluetooth(service=1)
             self.oe.dbg_log('services::start_service', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::start_service', 'ERROR: (%s)' % repr(e))
 
     def stop_service(self):
         try:
             self.oe.dbg_log('services::stop_service', 'enter_function', 0)
             self.oe.dbg_log('services::stop_service', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::stop_service', 'ERROR: (' + repr(e) + ')')
 
     def do_init(self):
@@ -309,7 +287,7 @@ class services:
             self.oe.dbg_log('services::do_init', 'exit_function', 0)
             self.load_values()
             self.oe.dbg_log('services::do_init', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::do_init', 'ERROR: (%s)' % repr(e))
 
     def set_value(self, listItem):
@@ -317,7 +295,7 @@ class services:
             self.oe.dbg_log('services::set_value', 'enter_function', 0)
             self.struct[listItem.getProperty('category')]['settings'][listItem.getProperty('entry')]['value'] = listItem.getProperty('value')
             self.oe.dbg_log('services::set_value', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::set_value', 'ERROR: (' + repr(e) + ')')
 
     def load_menu(self, focusItem):
@@ -325,7 +303,7 @@ class services:
             self.oe.dbg_log('services::load_menu', 'enter_function', 0)
             self.oe.winOeMain.build_menu(self.struct)
             self.oe.dbg_log('services::load_menu', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::load_menu', 'ERROR: (%s)' % repr(e))
 
     def load_values(self):
@@ -397,16 +375,11 @@ class services:
                     else:
                         self.struct['bluez']['settings']['obex_enabled']['hidden'] = True
                         self.struct['bluez']['settings']['obex_root']['hidden'] = True
-
-                    value = self.oe.read_setting('bluetooth', 'idle_timeout')
-                    if not value:
-                        value = '0'
-                    self.struct['bluez']['settings']['idle_timeout']['value'] = self.oe.read_setting('bluetooth', 'idle_timeout')
                 else:
                     self.struct['bluez']['hidden'] = 'true'
 
             self.oe.dbg_log('services::load_values', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::load_values', 'ERROR: (%s)' % repr(e))
 
     def initialize_samba(self, **kwargs):
@@ -444,7 +417,7 @@ class services:
             self.oe.set_service('samba', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_samba', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_samba', 'ERROR: (%s)' % repr(e), 4)
 
@@ -469,7 +442,7 @@ class services:
             self.oe.set_service('sshd', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_ssh', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_ssh', 'ERROR: (%s)' % repr(e), 4)
 
@@ -486,7 +459,7 @@ class services:
             self.oe.set_service('avahi', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_avahi', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_avahi', 'ERROR: (%s)' % repr(e), 4)
 
@@ -503,7 +476,7 @@ class services:
             self.oe.set_service('crond', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_cron', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::initialize_cron', 'ERROR: (%s)' % repr(e), 4)
 
@@ -527,7 +500,7 @@ class services:
             self.oe.set_service('bluez', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::init_bluetooth', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::init_bluetooth', 'ERROR: (' + repr(e) + ')', 4)
 
@@ -546,28 +519,15 @@ class services:
             self.oe.set_service('obexd', options, state)
             self.oe.set_busy(0)
             self.oe.dbg_log('services::init_obex', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.set_busy(0)
             self.oe.dbg_log('services::init_obex', 'ERROR: (' + repr(e) + ')', 4)
-
-    def idle_timeout(self, **kwargs):
-        try:
-            self.oe.dbg_log('services::idle_timeout', 'enter_function', 0)
-            self.oe.set_busy(1)
-            if 'listItem' in kwargs:
-                self.set_value(kwargs['listItem'])
-            self.oe.write_setting('bluetooth', 'idle_timeout', self.struct['bluez']['settings']['idle_timeout']['value'])
-            self.oe.set_busy(0)
-            self.oe.dbg_log('services::idle_timeout', 'exit_function', 0)
-        except Exception as e:
-            self.oe.set_busy(0)
-            self.oe.dbg_log('services::idle_timeout', 'ERROR: (' + repr(e) + ')', 4)
 
     def exit(self):
         try:
             self.oe.dbg_log('services::exit', 'enter_function', 0)
             self.oe.dbg_log('services::exit', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::exit', 'ERROR: (%s)' % repr(e), 4)
 
     def do_wizard(self):
@@ -586,7 +546,7 @@ class services:
             self.oe.winOeMain.set_wizard_button_title(self.oe._(32316))
             self.set_wizard_buttons()
             self.oe.dbg_log('services::do_wizard', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::do_wizard', 'ERROR: (%s)' % repr(e))
 
     def set_wizard_buttons(self):
@@ -602,7 +562,7 @@ class services:
                 else:
                     self.oe.winOeMain.set_wizard_radiobutton_2(self.oe._(32200), self, 'wizard_set_samba')
             self.oe.dbg_log('services::set_wizard_buttons', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::set_wizard_buttons', 'ERROR: (%s)' % repr(e))
 
     def wizard_set_ssh(self):
@@ -626,7 +586,7 @@ class services:
                 self.wizard_sshpasswd()
             self.set_wizard_buttons()
             self.oe.dbg_log('services::wizard_set_ssh', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::wizard_set_ssh', 'ERROR: (%s)' % repr(e))
 
     def wizard_set_samba(self):
@@ -640,7 +600,7 @@ class services:
             self.load_values()
             self.set_wizard_buttons()
             self.oe.dbg_log('services::wizard_set_samba', 'exit_function', 0)
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('services::wizard_set_samba', 'ERROR: (%s)' % repr(e))
 
     def wizard_sshpasswd(self):
@@ -665,11 +625,12 @@ class services:
                     self.oe.execute('cp -fp /usr/cache/shadow /storage/.cache/shadow')
                     readout3 = "Retype password"
                 else:
-                    ssh = subprocess.Popen(["passwd"], shell=False, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=0)
+                    ssh = subprocess.Popen(["passwd"], shell=False, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                     readout1 = ssh.stdout.readline()
-                    ssh.stdin.write('%s\n' % newpwd)
+                    ssh.stdin.write(newpwd + '\n')
+                    ssh.stdin.flush()
                     readout2 = ssh.stdout.readline()
-                    ssh.stdin.write('%s\n' % newpwd)
+                    ssh.stdin.write(newpwd + '\n')
                     readout3 = ssh.stdout.readline()
                 if "Bad password" in readout3:
                     xbmcDialog.ok(self.oe._(32220), self.oe._(32221))
@@ -684,5 +645,5 @@ class services:
             else:
                 self.oe.dbg_log('system::do_sshpasswd', 'user_cancelled', 0)
             return SSHchange
-        except Exception as e:
+        except Exception, e:
             self.oe.dbg_log('system::do_sshpasswd', 'ERROR: (' + repr(e) + ')')

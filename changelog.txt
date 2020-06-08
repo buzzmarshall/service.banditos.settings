@@ -1,1 +1,1 @@
-changelog: https://github.com/buzzmarshall/service.banditos.settings
+changelog: https://github.com/LibreELEC/service.libreelec.settings
