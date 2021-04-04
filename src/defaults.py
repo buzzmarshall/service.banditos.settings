@@ -19,8 +19,9 @@ USER_CONFIG = os.environ.get('USER_CONFIG', '/storage/.config')
 connman = {
     'CONNMAN_DAEMON': '/usr/sbin/connmand',
     'WAIT_CONF_FILE': '%s/banditos/network_wait' % CONFIG_CACHE,
-    'ENABLED': lambda : (True if os.path.exists(connman['CONNMAN_DAEMON']) else False),
+    'ENABLED': lambda : (True if os.path.exists(connman['CONNMAN_DAEMON']) and not os.path.exists('/dev/.kernel_ipconfig') else False),
     }
+connman['ENABLED'] = connman['ENABLED']()
 
 ################################################################################
 # Bluez Module
@@ -32,6 +33,7 @@ bluetooth = {
     'ENABLED': lambda : (True if os.path.exists(bluetooth['BLUETOOTH_DAEMON']) else False),
     'D_OBEXD_ROOT': '/storage/downloads/',
     }
+bluetooth['ENABLED'] = bluetooth['ENABLED']()
 
 ################################################################################
 # Service Module
@@ -76,10 +78,12 @@ system = {
     }
 
 updates = {
-    'ENABLED': True,
+    'ENABLED': not os.path.exists('/dev/.update_disabled'),
     'UPDATE_REQUEST_URL': 'https://update.libreelec.tv/updates.php',
     'UPDATE_DOWNLOAD_URL': 'http://%s.libreelec.tv/%s',
     'LOCAL_UPDATE_DIR': '/storage/.update/',
+
+    'RPI_FLASHING_TRIGGER': '/storage/.rpi_flash_firmware',
     }
 
 about = {'ENABLED': True}
